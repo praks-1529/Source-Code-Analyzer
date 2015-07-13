@@ -54,10 +54,22 @@ CXChildVisitResult Stmt_visitor(CXCursor cursor,
   SCA::Context *cntxt = static_cast<SCA::Context*>(client_data);
   if(isStmtABranch(cursor)) {
     cntxt->max_cyclomatic_++;
+    int old_nesting_value       = cntxt->cur_nesting_;
+    int old_complexity_value    = cntxt->cur_complexity_;
     cntxt->cur_nesting_++;
-  }
-  if(isStmtALoop(cursor)) {
-    cntxt->cur_complexity_++;
+    if(isStmtALoop(cursor)) {
+      cntxt->cur_complexity_++;
+    }
+    // Recursively call this function
+    clang_visitChildren(cursor, Stmt_visitor, (void*)cntxt);
+    if(cntxt->cur_nesting_ > cntxt->max_nesting_) {
+      cntxt->max_nesting_ = cntxt->cur_nesting_;
+    }
+    if(cntxt->cur_complexity_ > cntxt->max_complexity_) {
+      cntxt->max_complexity_ = cntxt->cur_complexity_;
+    }
+    cntxt->cur_nesting_         = old_nesting_value;
+    cntxt->cur_complexity_      = old_complexity_value;
   }
   return CXChildVisit_Recurse;
 }
@@ -82,17 +94,10 @@ CXChildVisitResult FunctionBody_visitor(CXCursor cursor,
     cntxt->cur_nesting_ =  1;
     if(isStmtALoop(cursor)) {
       cntxt->cur_complexity_ = 1;
+    } else {
+      cntxt->cur_complexity_ = 0;
     }
     clang_visitChildren(cursor, Stmt_visitor, (void*)cntxt);
-    if(isStmtALoop(cursor)) {
-      if(cntxt->cur_complexity_ > cntxt->max_complexity_) {
-        cntxt->max_complexity_ = cntxt->cur_complexity_;
-      }
-    }
-    if(cntxt->cur_nesting_ > cntxt->max_nesting_) {
-      // TODO:Get line number of the max nesting here 
-      cntxt->max_nesting_ = cntxt->cur_nesting_;
-    }
     return CXChildVisit_Continue;
   }
   return CXChildVisit_Recurse;
@@ -215,7 +220,7 @@ CXChildVisitResult FunctionDefinition_visitor(CXCursor cursor,
   // Reset all the metrics that would be cauluated for this function
   cntxt->cur_func_           = cur_func;
   cntxt->max_nesting_        = 0;
-  cntxt->max_cyclomatic_     = 0;
+  cntxt->max_cyclomatic_     = 1;
   cntxt->max_complexity_     = 0;
   cur_func->set_num_lines(getLineScopeFromCursor(cursor));
   cur_func->set_param_size(clang_Cursor_getNumArguments(cursor));
