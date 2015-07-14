@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
   {
   "pkg" : [
     {
-       "ssca_PkgName" : "/remote/srm406/prakashn/tools/sca/src",
+       "ssca_PkgName" : "/tools/sca/src",
        "ssca_sFile" : [
           {
             "ssca_FileName": "foo.cc",
