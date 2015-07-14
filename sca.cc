@@ -70,6 +70,7 @@ CXChildVisitResult Stmt_visitor(CXCursor cursor,
     }
     cntxt->cur_nesting_         = old_nesting_value;
     cntxt->cur_complexity_      = old_complexity_value;
+    return CXChildVisit_Continue;
   }
   return CXChildVisit_Recurse;
 }
