@@ -8,7 +8,7 @@ nightly basis to track the overall complexity and mantainibility of the code bas
 
 SCA collects below information about the code
 
-- Cycloatic complexity of a function/method
+- Cyclomatic complexity of a function/method
 - Time complexity of a function/method
 - Number of lines in a function/method
 - Number of argument to a function
@@ -16,10 +16,12 @@ SCA collects below information about the code
 - Number of TODO, FIXME comments in the code base
 - Comment density of source files
 
+This tool uses CLANG (libclang) which is a front-end to LLVM compiler. This is a beta code and you may face issues. Please report it to me and would love to fix them for you. 
+
 How to run SCA
 -----------------------------------------------------------------------------------------------------------
-SCA works as any gcc/g++ compiler and parses a source file. If you specify -o option it dumps the output in a file, if not it'll 
-dump the output on stdout. Lets take an example
+It's very simple!! You can use SCA like other compiler (ex gcc/g++,clang). All it takes is to replace your compiler with SCA in your build system. SCA supports most of the gcc/g++ options and hence there won't be any modifications needed in most of the cases. If you specify -o option it dumps the output in the file specified, if not it'll 
+dump the output on stdout. Lets take an example (foo.cc) and try to get some data out of this file
 
 foo.cc
 
