@@ -1,0 +1,203 @@
+body {
+  background : #fafafa;
+}
+
+body::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+form {
+  bottom-margin: 25px;
+  top-margin: 25px;
+}
+
+h1 {
+  text-align : center;
+}
+
+#nodeContainer {
+  width: 40%;
+  height: 100%;
+  float :left;
+  overflow: auto;
+}
+
+#tableDisplayArea {
+  right: 1%;
+  width: 60%;
+  height: 100%;
+  float :right;
+  overflow: auto;
+}
+
+.nodecenter { 
+    text-align : center;
+    margin-bottom : 10px;
+}
+
+.noderight { 
+    -webkit-animation: bounceInLeft 1s; /* Chrome, Safari, Opera */
+    position: relative;
+    width: 200px;
+    height: 50px;
+    background: #C1B1FF;
+    border: 10px;
+    border-radius :6px;
+    box-shadow: 10px 10px 5px #888888;
+    text-align : center;
+    font-weight: bold;
+    vertical-align : middle;
+    line-height : 50px;
+    margin-bottom : 10px;
+}
+
+/*----- Tabs -----*/
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+ 
+/*----- Tab Links -----*/
+/* Clearfix */
+.tab-links:after {
+  display:block;
+  clear:both;
+  content:'';
+}
+
+.tab-links li {
+  margin:0px 5px;
+  float:left;
+  list-style:none;
+}
+
+.tab-links a {
+  padding:9px 15px;
+  display:inline-block;
+  border-radius:3px 3px 0px 0px;
+  background:#7FB5DA;
+  font-size:16px;
+  font-weight:600;
+  color:#4c4c4c;
+  transition:all linear 0.15s;
+}
+
+.tab-links a:hover {
+  background:#a7cce5;
+  text-decoration:none;
+}
+
+li.active a, li.active a:hover {
+  background:#fff;
+  color:#4c4c4c;
+}
+
+/*----- Content of Tabs -----*/
+.tab-content {
+  padding:15px;
+  border-radius:3px;
+  box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+  background:#fff;
+}
+
+.tab {
+  display:none;
+}
+
+.tab.active {
+  display:block;
+}
+
+/*------------ For table sorter ---------*/
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+h3 {
+  font-size : small;
+}
+
+td {
+  padding: 5px;
+  background: #AEA0E7;
+  text-align : left;
+  font-size : small;
+}
+
+th {
+  padding: 10px;
+  background: #C0B1FF;
+  text-align : left;
+  font-size : small;
+}
+
+th  { 
+    background-image: url("bg.gif"); 
+    cursor: pointer; 
+    font-weight: bold; 
+    background-repeat: no-repeat; 
+    background-position: center left; 
+    padding-left: 20px; 
+    border-right: 1px solid #dad9c7; 
+    margin-left: -1px; 
+} 
+
+/*------------------- For question tool tip ----------*/
+span.question {
+  cursor: pointer;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #89A4CC;
+  line-height: 16px;
+  color: White;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+}
+
+span.question:hover { background-color: #3D6199; }
+div.tooltip {
+  background-color: #3D6199;
+  color: White;
+  position: absolute;
+  left: 25px;
+  top: -25px;
+  z-index: 1000000;
+  width: 250px;
+  text-align: left;
+  border-radius: 5px;
+}
+
+div.tooltip:before {
+  border-color: transparent #3D6199 transparent transparent;
+  border-right: 6px solid #3D6199;
+  border-style: solid;
+  border-width: 6px 6px 6px 0px;
+  content: "";
+  display: block;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  position: absolute;
+  top: 40%;
+  left: -6px;
+}
+
+div.tooltip p {
+  margin: 10px;
+  color: White;
+}
+

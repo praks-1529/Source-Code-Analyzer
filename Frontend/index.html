@@ -1,0 +1,76 @@
+<html>
+<head>
+        <!-- jQuery -->
+        <script src="ccm_third_party/jquery-2.1.1.min.js"></script>
+
+        <!-- jsTree -->
+        <link rel="stylesheet" href="ccm_third_party/dist/themes/default/style.min.css" />
+        <script src="ccm_third_party/dist/jstree.min.js"></script>
+        
+        <!-- jQuery UI -->
+        <link rel="stylesheet" href="ccm_third_party/jquery-ui-themes-1.11.2/jquery-ui-themes-1.11.2/themes/smoothness/jquery-ui.css">
+        <script src="ccm_third_party/jquery-ui-1.11.2/jquery-ui-1.11.2/jquery-ui.js"></script>
+
+        <!-- Animation -->
+        <link rel="stylesheet" href="ccm_third_party/animate.css"/>
+
+        <!-- CCM -->
+        <link rel="stylesheet" href="ccm.css"/>
+        <script src="ccm.js"></script>
+
+        <!-- Table sorter -->
+        <script type="text/javascript" src="ccm_third_party/__jquery.tablesorter/jquery.tablesorter.js"></script>
+<script>
+</script>
+
+</head>
+
+<body>
+<div> 
+  <h1> Source Code Analyzer </h1>
+</div>
+
+<h2>Please select a JSON file</h2>
+<form id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post">
+  <fieldset>
+     <input type='file' id='fileinput'>
+     <input type='button' id='btnLoad' value='Load' onclick='loadFile();'>
+  </fieldset>
+</form>
+
+<div id='nodeContainer'> </div>
+
+<div id="tableDisplayArea"> 
+  <div id="packageName"> </div> 
+  <div class="tabs">
+
+    <ul class="tab-links">
+      <li class="active"><a href="#SummaryTab"> Summary</a></li>
+      <li><a  href="#FileMetricsTab">File metrics</a></li>
+      <li><a  href="#FunctionMetricsTab">Function metrics</a></li>
+      <li><a  href="#MethodMetricsTab">Method metrics</a></li>
+<!--      <li><a  href="#ClassMetricsTab">Class metrics</a></li> -->
+    </ul>
+
+    <div class="tab-content">
+      <div id="SummaryTab" class="tab active">
+      </div>
+
+      <div id="FileMetricsTab" class="tab">
+      </div>
+
+      <div id="FunctionMetricsTab" class="tab">
+      </div>
+
+      <div id="MethodMetricsTab" class="tab">
+      </div>
+<!--
+      <div id="ClassMetricsTab" class="tab">
+      </div> -->
+    </div>
+  </div>
+</div>
+
+</body>
+</html> 
+
